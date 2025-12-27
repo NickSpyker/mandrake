@@ -2,6 +2,8 @@
 
 <p align="center">Harmless annoying noises generator.</p>
 
+<img align="center" src="img/mandrake.jpg" alt="mandrake">
+
 ## Downloads
 
 |                                               **Windows**                                               |                                             **Linux**                                             |                                             **MacOS**                                             |
