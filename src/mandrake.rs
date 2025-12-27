@@ -16,7 +16,10 @@
 
 use crate::{error::Error, result::Result};
 use rand::{rngs::ThreadRng, Rng};
-use rodio::{source::SineWave, OutputStream, OutputStreamBuilder, Sink, Source};
+use rodio::{
+    source::{Amplify, SineWave, TakeDuration}, OutputStream, OutputStreamBuilder, Sink,
+    Source,
+};
 use std::time::Duration;
 
 pub enum Mandrake {
@@ -40,7 +43,7 @@ impl Mandrake {
         let mut rng: ThreadRng = rand::rng();
 
         loop {
-            let mut duration: Duration = Duration::from_millis(rng.random_range(50..500));
+            let mut duration: Duration = Duration::from_millis(rng.random_range(50..=500));
 
             if let Some(max) = max_duration {
                 if elapsed >= max {
@@ -50,9 +53,10 @@ impl Mandrake {
                 elapsed += duration;
             }
 
-            let source = SineWave::new(rng.random_range(100.0..1000.0))
-                .take_duration(duration)
-                .amplify(rng.random_range(0.1..1.0));
+            let source: Amplify<TakeDuration<SineWave>> =
+                SineWave::new(rng.random_range(100.0..=1000.0))
+                    .take_duration(duration)
+                    .amplify(rng.random_range(0.1..=1.0));
 
             sink.append(source);
         }

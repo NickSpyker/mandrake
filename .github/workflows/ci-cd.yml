@@ -25,16 +25,13 @@ jobs:
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
-            platform: linux
-            extension: ""
+            asset_name: ${{ env.BINARY_NAME }}-linux
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-            platform: windows
-            extension: ".exe"
+            asset_name: ${{ env.BINARY_NAME }}-windows.exe
           - os: macos-latest
             target: aarch64-apple-darwin
-            platform: macos
-            extension: ""
+            asset_name: ${{ env.BINARY_NAME }}-macos
 
     steps:
       - uses: actions/checkout@v4
@@ -61,19 +58,18 @@ jobs:
       - name: Prepare Asset
         shell: bash
         run: |
-          cp target/${{ matrix.target }}/release/${{ env.BINARY_NAME }}${{ matrix.extension }} ${{ env.BINARY_NAME }}${{ matrix.extension }}
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            cp target/${{ matrix.target }}/release/${{ env.BINARY_NAME }}.exe ${{ matrix.asset_name }}
+          else
+            cp target/${{ matrix.target }}/release/${{ env.BINARY_NAME }} ${{ matrix.asset_name }}
+          fi
 
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ env.PROJECT_VERSION }}
           name: v${{ env.PROJECT_VERSION }}
-          files: ${{ env.BINARY_NAME }}${{ matrix.extension }}
-          body: |
-            ## Downloads
-            - **Linux**: `mandrake` (x86_64)
-            - **Windows**: `mandrake.exe` (x86_64)
-            - **macOS**: `mandrake` (Apple Silicon)
+          files: ${{ matrix.asset_name }}
           make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
