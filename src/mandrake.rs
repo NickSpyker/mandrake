@@ -26,18 +26,18 @@ pub enum Mandrake {
 
 impl Mandrake {
     pub fn scream(self) -> Result<()> {
-        match self {
-            Self::Infinite => self.scream_infinite(),
-            Self::WithDuration { duration } => self.scream_with_duration(duration),
-        }
-    }
-
-    fn scream_infinite(self) -> Result<()> {
         let stream_handle: OutputStream =
             OutputStreamBuilder::open_default_stream().map_err(Error::StreamError)?;
 
         let sink: Sink = Sink::connect_new(&stream_handle.mixer());
 
+        match self {
+            Self::Infinite => self.scream_infinite(sink),
+            Self::WithDuration { duration } => self.scream_with_duration(sink, duration),
+        }
+    }
+
+    fn scream_infinite(self, sink: Sink) -> Result<()> {
         loop {
             let frequency: f32 = rand::rng().random_range(100.0..1000.0);
 
@@ -53,16 +53,11 @@ impl Mandrake {
         }
     }
 
-    fn scream_with_duration(self, duration: u64) -> Result<()> {
+    fn scream_with_duration(self, sink: Sink, duration: u64) -> Result<()> {
         let mut scream: bool = true;
 
         let max_duration: Duration = Duration::from_secs(duration);
         let mut scream_duration: Duration = Duration::ZERO;
-
-        let stream_handle: OutputStream =
-            OutputStreamBuilder::open_default_stream().map_err(Error::StreamError)?;
-
-        let sink: Sink = Sink::connect_new(&stream_handle.mixer());
 
         loop {
             if !scream {
