@@ -11,9 +11,9 @@
     </cargoProject>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0639ad-5fbe-452e-b4fc-49a9f4f4bbeb" name="Changes" comment="Add unit test for scream_with_duration">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/ci-cd.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci-cd.yml" afterDir="false" />
+    <list default="true" id="8d0639ad-5fbe-452e-b4fc-49a9f4f4bbeb" name="Changes" comment="Fix Linux build failure, add alsa dependencies">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +93,7 @@
     </list>
   </component>
   <component name="RustProjectSettings">
+    <option name="rustcTarget" value="x86_64-unknown-linux-gnu" />
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
   </component>
   <component name="TaskManager">
@@ -103,7 +104,7 @@
       <option name="presentableId" value="Default" />
       <updated>1722191757172</updated>
       <workItem from="1722191758257" duration="44000" />
-      <workItem from="1766849387558" duration="4778000" />
+      <workItem from="1766849387558" duration="5137000" />
     </task>
     <task id="LOCAL-00001" summary="Setup rust project with cargo">
       <option name="closed" value="true" />
@@ -129,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766853950390</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fix Linux build failure, add alsa dependencies">
+      <option name="closed" value="true" />
+      <created>1766854203560</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1766854203560</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +148,7 @@
     <MESSAGE value="Setup rust project with cargo" />
     <MESSAGE value="Add CI/CD" />
     <MESSAGE value="Add unit test for scream_with_duration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add unit test for scream_with_duration" />
+    <MESSAGE value="Fix Linux build failure, add alsa dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Linux build failure, add alsa dependencies" />
   </component>
 </project>

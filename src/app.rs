@@ -26,7 +26,9 @@ pub fn run() -> Result<()> {
     unsafe {
         match libc::fork().cmp(&0) {
             Ordering::Less => process::exit(1),
-            Ordering::Equal => libc::setsid(),
+            Ordering::Equal => {
+                libc::setsid();
+            }
             Ordering::Greater => process::exit(0),
         }
     }
