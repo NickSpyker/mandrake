@@ -14,12 +14,22 @@
  * limitations under the License.
  */
 
+#[cfg(all(not(debug_assertions), target_os = "windows"))]
+use {std::env, windows_sys::Win32::System::Console::AttachConsole};
+
 #[cfg(unix)]
 use std::{cmp::Ordering, process};
 
 use crate::{args, mandrake::Mandrake, result::Result};
 
 pub fn run() -> Result<()> {
+    #[cfg(all(not(debug_assertions), target_os = "windows"))]
+    if env::args().any(|arg| matches!(arg.as_str(), "-h" | "--help" | "-V" | "--version")) {
+        unsafe {
+            AttachConsole(0xFFFFFFFF);
+        }
+    }
+
     let opt: args::Options = args::Options::parse();
 
     #[cfg(unix)]
