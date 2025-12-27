@@ -94,3 +94,41 @@ impl Mandrake {
         Ok(())
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::Mandrake;
+    use crate::result::Result;
+    use std::time::{Duration, Instant};
+
+    #[test]
+    fn scream_with_duration() {
+        let duration_secs: u64 = 2;
+
+        let mandrake: Mandrake = Mandrake::WithDuration {
+            duration: duration_secs,
+        };
+
+        let start: Instant = Instant::now();
+        let result: Result<()> = mandrake.scream();
+        let elapsed: Duration = start.elapsed();
+
+        assert!(result.is_ok(), "scream_with_duration should succeed");
+
+        let tolerance_secs: u64 = 1;
+
+        assert!(
+            elapsed.as_secs() >= duration_secs,
+            "scream should last at least {} seconds, but was {:?}",
+            duration_secs,
+            elapsed
+        );
+
+        assert!(
+            elapsed.as_secs() <= duration_secs + tolerance_secs,
+            "scream should complete within {} seconds, but took {:?}",
+            duration_secs + tolerance_secs,
+            elapsed
+        );
+    }
+}
