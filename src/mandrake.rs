@@ -20,7 +20,7 @@ use rodio::{
     source::{Amplify, SineWave, TakeDuration}, OutputStream, OutputStreamBuilder, Sink,
     Source,
 };
-use std::time::Duration;
+use std::{thread, time::Duration};
 
 pub enum Mandrake {
     Infinite,
@@ -59,6 +59,10 @@ impl Mandrake {
                     .amplify(rng.random_range(0.1..=1.0));
 
             sink.append(source);
+
+            while sink.len() > 10 {
+                thread::sleep(Duration::from_millis(10));
+            }
         }
 
         sink.sleep_until_end();
