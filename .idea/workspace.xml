@@ -11,10 +11,9 @@
     </cargoProject>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0639ad-5fbe-452e-b4fc-49a9f4f4bbeb" name="Changes" comment="Refactor mandrake.rs for simplicity">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/ci-cd.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci-cd.yml" afterDir="false" />
+    <list default="true" id="8d0639ad-5fbe-452e-b4fc-49a9f4f4bbeb" name="Changes" comment="Fix CI/CD and mandrake.rs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mandrake.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/mandrake.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +103,7 @@
       <option name="presentableId" value="Default" />
       <updated>1722191757172</updated>
       <workItem from="1722191758257" duration="44000" />
-      <workItem from="1766849387558" duration="6643000" />
+      <workItem from="1766849387558" duration="6683000" />
     </task>
     <task id="LOCAL-00001" summary="Setup rust project with cargo">
       <option name="closed" value="true" />
@@ -170,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766855755575</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fix CI/CD and mandrake.rs">
+      <option name="closed" value="true" />
+      <created>1766856091667</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1766856091667</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +192,7 @@
     <MESSAGE value="Remove test from CI/CD" />
     <MESSAGE value="Refactor CI/CI, refactor mandrake.rs" />
     <MESSAGE value="Refactor mandrake.rs for simplicity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor mandrake.rs for simplicity" />
+    <MESSAGE value="Fix CI/CD and mandrake.rs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix CI/CD and mandrake.rs" />
   </component>
 </project>

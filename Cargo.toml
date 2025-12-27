@@ -20,12 +20,12 @@ categories = ["multimedia::audio"]
 description = "Harmless annoying noises generator"
 documentation = "README.md"
 edition = "2024"
-homepage = ""
+homepage = "https://github.com/NickSpyker/mandrake/blob/main/README.md"
 keywords = ["audio", "sound"]
 license = "MIT or Apache-2.0"
 publish = false
 readme = "README.md"
-repository = "https://github.com/NickSpyker/strix"
+repository = "https://github.com/NickSpyker/mandrake"
 
 [dependencies]
 clap = { version = "4.5.53", features = ["derive"] }
