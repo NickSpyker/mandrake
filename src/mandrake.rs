@@ -15,77 +15,49 @@
  */
 
 use crate::{error::Error, result::Result};
-use rand::Rng;
+use rand::{rngs::ThreadRng, Rng};
 use rodio::{source::SineWave, OutputStream, OutputStreamBuilder, Sink, Source};
 use std::time::Duration;
 
 pub enum Mandrake {
     Infinite,
-    WithDuration { duration: u64 },
+    WithDuration(u64),
 }
 
 impl Mandrake {
     pub fn scream(self) -> Result<()> {
-        let stream_handle: OutputStream =
+        let stream: OutputStream =
             OutputStreamBuilder::open_default_stream().map_err(Error::StreamError)?;
 
-        let sink: Sink = Sink::connect_new(&stream_handle.mixer());
+        let sink: Sink = Sink::connect_new(&stream.mixer());
 
-        match self {
-            Self::Infinite => self.scream_infinite(sink),
-            Self::WithDuration { duration } => self.scream_with_duration(sink, duration),
-        }
-    }
+        let max_duration: Option<Duration> = match self {
+            Self::Infinite => None,
+            Self::WithDuration(secs) => Some(Duration::from_secs(secs)),
+        };
 
-    fn scream_infinite(self, sink: Sink) -> Result<()> {
-        loop {
-            let frequency: f32 = rand::rng().random_range(100.0..1000.0);
-
-            let duration: Duration = Duration::from_millis(rand::rng().random_range(50..500));
-
-            let amplify: f32 = rand::rng().random_range(0.1..1.0);
-
-            let source = SineWave::new(frequency)
-                .take_duration(duration)
-                .amplify(amplify);
-
-            sink.append(source);
-        }
-    }
-
-    fn scream_with_duration(self, sink: Sink, duration: u64) -> Result<()> {
-        let mut scream: bool = true;
-
-        let max_duration: Duration = Duration::from_secs(duration);
-        let mut scream_duration: Duration = Duration::ZERO;
+        let mut elapsed: Duration = Duration::ZERO;
+        let mut rng: ThreadRng = rand::rng();
 
         loop {
-            if !scream {
-                break;
+            let mut duration: Duration = Duration::from_millis(rng.random_range(50..500));
+
+            if let Some(max) = max_duration {
+                if elapsed >= max {
+                    break;
+                }
+                duration = duration.min(max - elapsed);
+                elapsed += duration;
             }
 
-            let frequency: f32 = rand::rng().random_range(100.0..1000.0);
-
-            let mut duration: Duration = Duration::from_millis(rand::rng().random_range(50..500));
-
-            if duration + scream_duration > max_duration {
-                duration = max_duration - scream_duration;
-                scream = false;
-            } else {
-                scream_duration += duration;
-            }
-
-            let amplify: f32 = rand::rng().random_range(0.1..1.0);
-
-            let source = SineWave::new(frequency)
+            let source = SineWave::new(rng.random_range(100.0..1000.0))
                 .take_duration(duration)
-                .amplify(amplify);
+                .amplify(rng.random_range(0.1..1.0));
 
             sink.append(source);
         }
 
         sink.sleep_until_end();
-
         Ok(())
     }
 }
@@ -100,9 +72,7 @@ mod tests {
     fn scream_with_duration() {
         let duration_secs: u64 = 2;
 
-        let mandrake: Mandrake = Mandrake::WithDuration {
-            duration: duration_secs,
-        };
+        let mandrake: Mandrake = Mandrake::WithDuration(duration_secs);
 
         let start: Instant = Instant::now();
         let result: Result<()> = mandrake.scream();

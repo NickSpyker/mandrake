@@ -34,7 +34,7 @@ pub fn run() -> Result<()> {
     }
 
     let mandrake: Mandrake = if let Some(duration) = opt.duration {
-        Mandrake::WithDuration { duration }
+        Mandrake::WithDuration(duration)
     } else {
         Mandrake::Infinite
     };

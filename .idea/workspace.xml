@@ -11,9 +11,9 @@
     </cargoProject>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0639ad-5fbe-452e-b4fc-49a9f4f4bbeb" name="Changes" comment="Remove test from CI/CD">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/ci-cd.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci-cd.yml" afterDir="false" />
+    <list default="true" id="8d0639ad-5fbe-452e-b4fc-49a9f4f4bbeb" name="Changes" comment="Refactor CI/CI, refactor mandrake.rs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mandrake.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/mandrake.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +94,6 @@
     </list>
   </component>
   <component name="RustProjectSettings">
-    <option name="rustcTarget" value="x86_64-unknown-linux-gnu" />
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
   </component>
   <component name="TaskManager">
@@ -105,7 +104,7 @@
       <option name="presentableId" value="Default" />
       <updated>1722191757172</updated>
       <workItem from="1722191758257" duration="44000" />
-      <workItem from="1766849387558" duration="5897000" />
+      <workItem from="1766849387558" duration="6297000" />
     </task>
     <task id="LOCAL-00001" summary="Setup rust project with cargo">
       <option name="closed" value="true" />
@@ -155,7 +154,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766854680080</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Refactor CI/CI, refactor mandrake.rs">
+      <option name="closed" value="true" />
+      <created>1766855344851</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1766855344851</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +175,7 @@
     <MESSAGE value="Fix Linux build failure, add alsa dependencies" />
     <MESSAGE value="Fix setsid for unix" />
     <MESSAGE value="Remove test from CI/CD" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove test from CI/CD" />
+    <MESSAGE value="Refactor CI/CI, refactor mandrake.rs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor CI/CI, refactor mandrake.rs" />
   </component>
 </project>
