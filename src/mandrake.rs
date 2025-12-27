@@ -43,7 +43,7 @@ impl Mandrake {
         let mut rng: ThreadRng = rand::rng();
 
         loop {
-            let mut duration: Duration = Duration::from_millis(rng.random_range(50..=500));
+            let mut duration: Duration = Duration::from_millis(rng.random_range(10..=500));
 
             if let Some(max) = max_duration {
                 if elapsed >= max {
@@ -54,13 +54,13 @@ impl Mandrake {
             }
 
             let source: Amplify<TakeDuration<SineWave>> =
-                SineWave::new(rng.random_range(100.0..=1000.0))
+                SineWave::new(rng.random_range(100.0..=3000.0))
                     .take_duration(duration)
                     .amplify(rng.random_range(0.1..=1.0));
 
             sink.append(source);
 
-            while sink.len() > 10 {
+            while sink.len() > 2 {
                 thread::sleep(Duration::from_millis(10));
             }
         }
