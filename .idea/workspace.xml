@@ -11,9 +11,9 @@
     </cargoProject>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0639ad-5fbe-452e-b4fc-49a9f4f4bbeb" name="Changes" comment="Fix Linux build failure, add alsa dependencies">
+    <list default="true" id="8d0639ad-5fbe-452e-b4fc-49a9f4f4bbeb" name="Changes" comment="Fix setsid for unix">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci-cd.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci-cd.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +104,7 @@
       <option name="presentableId" value="Default" />
       <updated>1722191757172</updated>
       <workItem from="1722191758257" duration="44000" />
-      <workItem from="1766849387558" duration="5137000" />
+      <workItem from="1766849387558" duration="5239000" />
     </task>
     <task id="LOCAL-00001" summary="Setup rust project with cargo">
       <option name="closed" value="true" />
@@ -138,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766854203560</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fix setsid for unix">
+      <option name="closed" value="true" />
+      <created>1766854576372</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1766854576372</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +157,7 @@
     <MESSAGE value="Add CI/CD" />
     <MESSAGE value="Add unit test for scream_with_duration" />
     <MESSAGE value="Fix Linux build failure, add alsa dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Linux build failure, add alsa dependencies" />
+    <MESSAGE value="Fix setsid for unix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix setsid for unix" />
   </component>
 </project>

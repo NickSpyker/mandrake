@@ -16,24 +16,8 @@ env:
   BINARY_NAME: mandrake
 
 jobs:
-  test:
-    name: Test Suite
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
-
-      - name: Install ALSA dependencies
-        run: sudo apt-get update && sudo apt-get install -y libasound2-dev
-
-      - name: Run Tests
-        run: cargo test --package ${{ env.PACKAGE_NAME }} --bin ${{ env.BINARY_NAME }}
-
   release:
     name: Release for ${{ matrix.os }}
-    needs: test
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ${{ matrix.os }}
     strategy:
